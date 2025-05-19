@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body style="height: 100vh;">
+
+    <header>
+        <div class="header-container">
+            <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo" onclick="window.location.href='homepage.html'"></a>
+            
+            <div class="search-container-login">
+                <h1 style="padding-top: 25px;">Object Oriented Programming</h1>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <div class="landing-bg"></div>
+
+    
+    <div class="login-container">
+        <div style="
+        background-color: #FFF5E1;
+            width: 90%;
+            max-width: 400px;
+            margin: 120px auto 0;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+            text-align: center;
+            position: relative;
+            left: 20%; /* pushes it slightly right */
+            ">
+
+            <h1 style="color: darkslategray; margin-bottom: 20px;">Login</h1>
+            <form id="loginForm" onsubmit="login(); return false;">
+                <div style="display: flex; flex-direction: column; gap: 15px;">
+                    <input type="text" placeholder="Username" required id="username"
+                        style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+
+                    <input type="password" placeholder="Password" required id="password"
+                        style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                    
+                    <div id="loginError" class="error-message" style="display: none; color: red; font-size: 14px;">Invalid username or password</div>
+
+                    <button type="submit" class="button">Login</button>
+                    <p style="margin-top: 10px; color: black;">Don't have an account? <a href="register.html"
+                            style="color: darkslategray;">Register</a></p>
+                </div>
+            </form>
+        </div>
+        
+
+        <script>
+            
+            // Mark current page as active in the navbar
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll('#navbar li a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+
+            // default users (hardcoded)
+            const defaultUsers = [
+                {
+                    username: "koyawel",
+                    password: "pass123",
+                    name: "Nepthalie Jezer Macaslang",
+                    email: "wek@bpc.edu.ph",
+                    address: "Perez, Bulakan, Bulacan",
+                    contact: "09997132605",
+                    section: "BSIS 2C",
+                    profileImage: "images/download.png"
+                },
+                {
+                    username: "jeromeaguilar367",
+                    password: "dontlosehope13",
+                    name: "Jerome Aguilar",
+                    email: "jerome367@bpc.edu.ph",
+                    address: "San Francisco, Bulakan, Bulacan",
+                    contact: "09683297391",
+                    section: "BSIS 2C",
+                    profileImage: "images/moi.jpg"
+                },
+                {
+                    username: "markus123",
+                    password: "123456",
+                    name: "Mark Clarence Fortuna",
+                    email: "mark@bpc.edu.ph",
+                    address: "Pungo, Calumpit, Bulacan",
+                    contact: "09555666777",
+                    section: "BSIS 2C",
+                    profileImage: "images/clarence.jpg"
+                },
+            ];
+
+            // Always reset users in localStorage with our new default users
+            localStorage.setItem('users', JSON.stringify(defaultUsers));
+
+            function login() {
+                var username = document.getElementById("username").value.trim();
+                var password = document.getElementById("password").value.trim();
+                const loginError = document.getElementById("loginError");
+
+                if (username === "" || password === "") {
+                    alert("Please enter both username and password.");
+                    return;
+                }
+
+                // Get all users from localStorage
+                const users = JSON.parse(localStorage.getItem('users'));
+                
+                // Find user with matching username and password
+                const user = users.find(
+                    (u) => u.username === username && u.password === password
+                );
+
+                if (user) {
+                    // Store user data in localStorage to simulate login
+                    localStorage.setItem("loggedInUser", JSON.stringify(user));
+                    window.location.href = "homepage.html";
+                } else {
+                    loginError.style.display = 'block';
+                }
+            }
+
+            // Add event listener for Enter key
+            document.getElementById("password").addEventListener("keypress", function(event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    login();
+                }
+            });
+
+            window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.height = '60px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.height = '70px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        </script>
+    </div>
+
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>About WELS</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                    <li><a href="warranty.html">Warranty</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="product.html">Bikes</a></li>
+                    <li><a href="product.html">Accessories</a></li>
+                    <li><a href="product.html">Apparel</a></li>
+                    <li><a href="product.html">Components</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Stay Connected</h4>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 WELS Cycling. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

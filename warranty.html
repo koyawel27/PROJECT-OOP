@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>Warranty | WELS Cycling</title>
+    <script src="shared-cart.js"></script>
+    <script src="floating-cart-modal.js"></script>
+    <style>
+        .warranty-section {
+            padding: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .warranty-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-top: 40px;
+        }
+        
+        .warranty-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+        
+        .warranty-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .warranty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .warranty-card h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e41e26;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+        
+        .warranty-card p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .warranty-card ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .warranty-card ul li {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .warranty-contact {
+            background-color: #d13d38;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .warranty-contact h3 {
+            margin-bottom: 15px;
+        }
+        
+        .warranty-contact p {
+            margin-bottom: 20px;
+        }
+        
+        .btn-warranty {
+            background-color: white;
+            color: #e41e26;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        
+        .btn-warranty:hover {
+            background-color: #f2f2f2;
+        }
+        
+        @media (min-width: 768px) {
+            .warranty-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo" onclick="window.location.href='homepage.html'"></a>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search bikes, gear & more">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="cart.html">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                      <span class="cart-count" id="cart-count" style="display:none;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section class="warranty-section">
+            <div class="warranty-header">
+                <h1 style="color: #d13d38;">WELS Cycling Warranty Policy</h1>
+                <p style="color: white;">We stand behind our products with industry-leading warranty coverage</p>
+            </div>
+            
+            <div class="warranty-content">
+                <div class="warranty-card">
+                    <h3>Bicycle Frame Warranty</h3>
+                    <p>All WELS branded bicycle frames are covered by our comprehensive warranty:</p>
+                    <ul>
+                        <li><strong>Carbon Frames:</strong> Limited lifetime warranty for the original owner</li>
+                        <li><strong>Aluminum Frames:</strong> 5-year warranty against manufacturing defects</li>
+                        <li><strong>Suspension Components:</strong> 2-year warranty against manufacturing defects</li>
+                        <li><strong>Paint & Finish:</strong> 1-year warranty against defects in materials and workmanship</li>
+                    </ul>
+                    <p>Our warranty covers defects in materials and workmanship when used normally according to our guidelines.</p>
+                </div>
+                
+                <div class="warranty-card">
+                    <h3>Components & Accessories</h3>
+                    <p>Components and accessories carry their own specific warranty terms:</p>
+                    <ul>
+                        <li><strong>WELS Branded Components:</strong> 2-year warranty against manufacturing defects</li>
+                        <li><strong>Third-party Components:</strong> Covered by the original manufacturer's warranty</li>
+                        <li><strong>Electronic Components:</strong> 1-year warranty against defects in materials and workmanship</li>
+                        <li><strong>Apparel & Soft Goods:</strong> 90-day warranty against manufacturing defects</li>
+                    </ul>
+                    <p>Proof of purchase is required for all warranty claims.</p>
+                </div>
+                
+                <div class="warranty-card">
+                    <h3>What's Not Covered</h3>
+                    <p>Our warranty does not cover damages resulting from:</p>
+                    <ul>
+                        <li>Normal wear and tear</li>
+                        <li>Improper assembly or maintenance</li>
+                        <li>Accidents, crashes, or misuse</li>
+                        <li>Modifications to the original frame or components</li>
+                        <li>Commercial use or rental applications</li>
+                        <li>Damage from extreme or improper riding conditions</li>
+                        <li>Failure to perform regular maintenance</li>
+                    </ul>
+                    <p>WELS reserves the right to determine whether a product is eligible for warranty coverage.</p>
+                </div>
+                
+                <div class="warranty-card">
+                    <h3>How to Submit a Claim</h3>
+                    <p>If you believe your product is eligible for warranty service:</p>
+                    <ol>
+                        <li>Contact our Customer Service team through our Contact Us page</li>
+                        <li>Provide your order number, purchase date, and photos/description of the issue</li>
+                        <li>Our technical team will evaluate your claim and provide instructions</li>
+                        <li>If approved, you'll receive either a repair, replacement, or store credit</li>
+                    </ol>
+                    <p>Most warranty claims are processed within 5-7 business days.</p>
+                </div>
+            </div>
+            
+            <div class="warranty-contact">
+                <h3>Need Help With a Warranty Claim?</h3>
+                <p>Our customer service team is ready to assist you with any warranty questions or claims.</p>
+                <a href="contact-us.html" class="btn-warranty">Contact Support</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>About WELS</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                    <li><a href="warranty.html">Warranty</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="product.html">Bikes</a></li>
+                    <li><a href="product.html">Accessories</a></li>
+                    <li><a href="product.html">Apparel</a></li>
+                    <li><a href="product.html">Components</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 WELS Cycling. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navbar.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Change hamburger icon to X when menu is open
+            if (navbar.classList.contains('active')) {
+                hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburger.children[1].style.opacity = '0';
+                hamburger.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'none';
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (navbar.classList.contains('active') && 
+                !event.target.closest('#navbar') && 
+                !event.target.closest('.hamburger')) {
+                navbar.classList.remove('active');
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'none';
+            }
+        });
+
+        // Header shrink on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.height = '60px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.height = '70px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Add active class to current page in navigation
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#navbar li a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+    </script>
+</body>
+</html>

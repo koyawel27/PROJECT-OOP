@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>WELS Cycling | Premium Bikes & Gear</title>
+    <script src="shared-cart.js"></script>
+    <script src="floating-cart-modal.js"></script>
+    <script src="auth-protection.js"></script>
+
+</head>
+
+    <body>
+        <header>
+            <div class="header-container">
+                <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo" onclick="window.location.href='homepage.html'"></a>
+                
+                <div class="search-container">
+                    <input type="text" placeholder="Search bikes, gear & more">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+
+                <div class="hamburger" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <ul id="navbar">
+                    <li><a href="homepage.html">Home</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="activities.html">Activities</a></li>
+                    <li><a href="product.html">Shop</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li>
+                        <a href="cart.html">
+                          <i class="fa-solid fa-cart-shopping"></i>
+                          <span class="cart-count" id="cart-count" style="display:none;">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <!-- Hero Section -->
+            <section id="hero">
+                <div class="hero-content">
+                    <h4>Trade-in-offer</h4>
+                    <h1>Ride Beyond Limits</h1>
+                    <h2>Super Value Deals.</h2>
+                    <button onclick="location.href='product.html'">Start Your Journey</button>
+                </div>
+            </section>
+
+            <!-- Featured Products Section -->
+            <section class="container">
+                <h2 class="section-title">Featured Bikes</h2>
+                
+                <div class="products-grid">
+                    <div class="product-card" data-id="1">
+                        <div class="product-image">
+                            <img src="images/bike.png" alt="Specialized Roubaix">
+                            <div class="product-badge">Sale</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">SPECIALIZED</div>
+                            <h3 class="product-name">Roubaix Comp - SRAM Rival eTap AXS</h3>
+                            <div class="product-category">Endurance Road Bike</div>
+                            <div class="product-price">
+                                <span class="price-current">₱1,699,990</span>
+                                <span class="price-original">₱1,799,000</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-id="2">
+                        <div class="product-image">
+                            <img src="images/bike2.png" alt="Lapierre Xelius">
+                            <div class="product-badge">New</div>
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">LAPIERRE</div>
+                            <h3 class="product-name">XELIUS DRS 8.0 C2 - Carbon Road Bike</h3>
+                            <div class="product-category">2025 - black</div>
+                            <div class="product-price">
+                                <span class="price-current">₱176,595</span>
+                                <span class="price-original">₱189,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card" data-id="3">
+                        <div class="product-image">
+                            <img src="images/bike3.png" alt="Giant Defy">
+                        </div>
+                        <div class="product-info">
+                            <div class="product-brand">GIANT</div>
+                            <h3 class="product-name">Defy Advanced 1 - Carbon Road Bike</h3>
+                            <div class="product-category">2024 - charcoal/milky way</div>
+                            <div class="product-price">
+                                <span class="price-current">₱1,778,451</span>
+                                <span class="price-original">₱1,888,451</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center;">
+                    <button onclick="location.href='product.html'" class="btn">View All Bikes</button>
+                </div>
+            </section>
+
+            <!-- Collections Section - Dark background -->
+            <section class="featured-collections">
+                <div class="container">
+                    <h2 class="section-title" style="color: white;">Shop Collections</h2>
+                    
+                    <div class="collections-grid">
+                        <div class="collection-card">
+                            <div class="collection-image" style="background-image: url('images/SuperSix_EVO_Crb_Disc_Ult_Di2_MRC_PD.png');"></div>
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Road Bikes</h3>
+                                <p class="collection-subtitle">Built for speed and endurance</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-card">
+                            <div class="collection-image" style="background-image: url('images/93325-00_SJ-15-SW-GUN-CLY-WHTMTN_HERO-PDP.png');"></div>
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Mountain Bikes</h3>
+                                <p class="collection-subtitle">Conquer any terrain</p>
+                            </div>
+                        </div>
+                        
+                        <div class="collection-card">
+                            <div class="collection-image" style="background-image: url('images/MY25_Vala_CC_X0_AXS_RSV_MidnightGreen_ae3aec58-bc2f-4b60-9518-f3d50b2e3640.png');"></div>
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Electric Bikes</h3>
+                                <p class="collection-subtitle">Power when you need it</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Accessories Section -->
+            <section class="accessories-section">
+                <div class="container">
+                    <h2 class="section-title">Top Accessories</h2>
+                    
+                    <div class="products-grid">
+                        <div class="product-card" data-id="6">
+                            <div class="product-image">
+                                <img src="images/GPS.png" alt="Wahoo GPS">
+                                <div class="product-badge">Popular</div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">WAHOO</div>
+                                <h3 class="product-name">ELEMNT BOLT 2.0 GPS Bike Computer</h3>
+                                <div class="product-category">Black</div>
+                                <div class="product-price">
+                                    <span class="price-current">₱15,074</span>
+                                    <span class="price-original">₱18,074</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-id="7">
+                            <div class="product-image">
+                                <img src="images/shoes.png" alt="Shimano Shoes">
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">SHIMANO</div>
+                                <h3 class="product-name">SH-EX700 Bike Shoes Men</h3>
+                                <div class="product-category">Pro Cycling Shoes - Black</div>
+                                <div class="product-price">
+                                    <span class="price-current">₱7,899</span>
+                                    <span class="price-original">₱10,899</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-card" data-id="8">
+                            <div class="product-image">
+                                <img src="images/Sleeve.png" alt="Café du Cycliste Jersey">
+                                <div class="product-badge">Hot</div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-brand">Café du Cycliste</div>
+                                <h3 class="product-name">Olympe Short Sleeve Jersey Men</h3>
+                                <div class="product-category">Cinder red</div>
+                                <div class="product-price">
+                                    <span class="price-current">₱11,871</span>
+                                    <span class="price-original">₱14,899</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </section>
+
+            
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>About WELS</h4>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="about.html">Careers</a></li>
+                        
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                        <li><a href="warranty.html">Warranty</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="product.html">Bikes</a></li>
+                        <li><a href="product.html">Accessories</a></li>
+                        <li><a href="product.html">Apparel</a></li>
+                        <li><a href="product.html">Components</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 WELS Cycling. All Rights Reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            // Mobile menu toggle
+            function toggleMenu() {
+                const navbar = document.getElementById('navbar');
+                const hamburger = document.querySelector('.hamburger');
+                
+                navbar.classList.toggle('active');
+                hamburger.classList.toggle('active');
+                
+                // Change hamburger icon to X when menu is open
+                if (navbar.classList.contains('active')) {
+                    hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    hamburger.children[1].style.opacity = '0';
+                    hamburger.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+                } else {
+                    hamburger.children[0].style.transform = 'none';
+                    hamburger.children[1].style.opacity = '1';
+                    hamburger.children[2].style.transform = 'none';
+                }
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const navbar = document.getElementById('navbar');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (navbar.classList.contains('active') && 
+                    !event.target.closest('#navbar') && 
+                    !event.target.closest('.hamburger')) {
+                    navbar.classList.remove('active');
+                    hamburger.children[0].style.transform = 'none';
+                    hamburger.children[1].style.opacity = '1';
+                    hamburger.children[2].style.transform = 'none';
+                }
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70, // Account for fixed header
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Header shrink on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.height = '60px';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.height = '70px';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                }
+            });
+
+            // Product image zoom effect on hover
+            const productImages = document.querySelectorAll('.product-image img');
+            productImages.forEach(img => {
+                img.addEventListener('mouseover', function() {
+                    this.style.transform = 'scale(1.08)';
+                });
+                
+                img.addEventListener('mouseout', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+
+            
+
+            const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#navbar li a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+
+            document.addEventListener('DOMContentLoaded', function() {
+        // Make product cards clickable to redirect to product page with ID
+        const productCards = document.querySelectorAll('.product-card');
+        
+        productCards.forEach((card, index) => {
+            // Extract product info for passing to product page
+            card.addEventListener('click', function(e) {
+                // Don't navigate if clicked on the button
+                if (e.target.tagName === 'BUTTON') {
+                    return;
+                }
+                
+                // Get product information
+                const productBrand = card.querySelector('.product-brand') ? 
+                                    card.querySelector('.product-brand').textContent : '';
+                const productName = card.querySelector('.product-name') ? 
+                                card.querySelector('.product-name').textContent : '';
+                const productCategory = card.querySelector('.product-category') ? 
+                                    card.querySelector('.product-category').textContent : '';
+                
+                // Create a URL-friendly version of the product name for identification
+                const productSlug = productName.toLowerCase()
+                    .replace(/[^\w\s-]/g, '') // Remove special characters
+                    .replace(/\s+/g, '-');    // Replace spaces with hyphens
+                
+                // Navigate to product page with product info in URL parameters
+                window.location.href = `product.html?id=${index + 1}&product=${encodeURIComponent(productSlug)}`;
+            });
+        });
+        
+        // Make collection cards clickable
+        const collectionCards = document.querySelectorAll('.collection-card');
+        
+        collectionCards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Get collection title
+                const collectionTitle = card.querySelector('.collection-title').textContent;
+                
+                // Map collection titles to product categories
+                let category;
+                switch(collectionTitle) {
+                    case 'Road Bikes':
+                        category = 'rb';
+                        break;
+                    case 'Mountain Bikes':
+                        category = 'mtb';
+                        break;
+                    case 'Electric Bikes':
+                        category = 'e-bike';
+                        break;
+                    default:
+                        category = 'all';
+                }
+                
+                // Navigate to product page with category filter
+                window.location.href = `product.html?category=${category}`;
+            });
+        });
+        
+        // Add click handler for "View All Bikes" button
+        const viewAllButton = document.querySelector('.btn');
+        if (viewAllButton) {
+            viewAllButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'product.html?category=bikes';
+            });
+        }
+    });
+    
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>FAQ | WELS Cycling</title>
+    <script src="shared-cart.js"></script>
+    <script src="floating-cart-modal.js"></script>
+    <style>
+        .faq-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .faq-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .faq-header h1 {
+            color: #d13d38;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .faq-header p {
+            color: whitesmoke;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .category-button {
+            background-color: #f5f5f5;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-button:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .category-button.active {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .faq-section {
+            margin-bottom: 50px;
+        }
+        
+        .faq-section h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background-color: #f9f9f9;
+            padding: 20px;
+            font-weight: 600;
+            font-size: 18px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+        
+        .faq-answer-content {
+            padding: 20px;
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        
+        .contact-cta {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .contact-cta h3 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .contact-cta p {
+            color: #666;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-cta .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #e74c3c;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-cta .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+        
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .faq-header h1 {
+                font-size: 28px;
+            }
+            
+            .faq-header p {
+                font-size: 16px;
+            }
+            
+            .category-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            
+            .faq-question {
+                font-size: 16px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo" onclick="window.location.href='homepage.html'"></a>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search bikes, gear & more">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="cart.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count" id="cart-count" style="display:none;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="faq-container">
+            <div class="faq-header">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to the most common questions about our products, services, shipping, returns, and more.</p>
+            </div>
+            
+            <div class="faq-categories">
+                <button class="category-button active" data-category="all">All Questions</button>
+                <button class="category-button" data-category="orders">Orders & Shipping</button>
+                <button class="category-button" data-category="products">Products & Sizing</button>
+                <button class="category-button" data-category="payments">Payment & Pricing</button>
+                <button class="category-button" data-category="returns">Returns & Warranty</button>
+            </div>
+            
+            <!-- Orders & Shipping Section -->
+            <div class="faq-section" id="orders">
+                <h2>Orders & Shipping</h2>
+                
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        How long will it take to receive my order?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Standard shipping within the Philippines typically takes 3-5 business days after processing. Processing time is usually 1-2 business days for in-stock items. For custom or pre-order bikes, please allow 2-4 weeks for delivery. International shipping times vary by destination but generally take 7-14 business days.</p>
+                            <p>You'll receive a tracking number via email once your order ships, allowing you to monitor its progress.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        Do you ship internationally?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, we ship to most countries worldwide. International shipping rates and delivery times vary depending on the destination and order value. Please note that customers are responsible for any customs duties, import taxes, or fees levied by their country's customs authorities.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="orders">
+                    <div class="faq-question">
+                        How do I track my order?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Once your order ships, you'll receive a confirmation email with a tracking number and link. You can also check your order status by logging into your WELS account and navigating to "Order History." If you haven't received tracking information within 3 business days of placing your order, please contact our customer service team.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Products & Sizing Section -->
+            <div class="faq-section" id="products">
+                <h2>Products & Sizing</h2>
+                
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        How do I determine the right bike size for me?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Finding the right bike size is crucial for comfort and performance. We recommend using our Bike Size Calculator on each product page, which suggests the appropriate frame size based on your height and inseam measurement.</p>
+                            <p>For the most accurate fit, we offer remote video fitting consultations with our professional bike fitters for ₱1,500, which is credited toward your bike purchase. This service ensures you get the perfect fit for your riding style and body proportions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        Do your bikes come assembled?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Our bikes are shipped 85% assembled. The remaining assembly typically includes installing the front wheel, handlebars, pedals, and making final adjustments. We include detailed assembly instructions and all necessary tools.</p>
+                            <p>If you're not comfortable completing the assembly yourself, we recommend taking the bike to a local bike shop for professional assembly, or you can request our "Ready to Ride" service for an additional fee during checkout, which ensures your bike arrives fully assembled.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="products">
+                    <div class="faq-question">
+                        How do I care for and maintain my bike?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Regular maintenance is key to extending the life of your bike. We recommend:</p>
+                            <ul>
+                                <li>Clean your bike after muddy or wet rides</li>
+                                <li>Keep the drivetrain clean and lubricated</li>
+                                <li>Check tire pressure before every ride</li>
+                                <li>Inspect brakes and brake pads regularly</li>
+                                <li>Schedule professional service every 6 months or 1,000km</li>
+                            </ul>
+                            <p>For detailed maintenance guides, check out our Bike Care resources in the Support section.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment & Pricing Section -->
+            <div class="faq-section" id="payments">
+                <h2>Payment & Pricing</h2>
+                
+                <div class="faq-item" data-category="payments">
+                    <div class="faq-question">
+                        What payment methods do you accept?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We accept the following payment methods:</p>
+                            <ul>
+                                <li>Credit/Debit Cards (Visa, Mastercard, American Express)</li>
+                                <li>PayPal</li>
+                                <li>GCash</li>
+                                <li>Maya</li>
+                                <li>Bank Transfer</li>
+                                <li>Installment payments via Home Credit (for orders over ₱5,000)</li>
+                            </ul>
+                            <p>All payments are securely processed and encrypted.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="payments">
+                    <div class="faq-question">
+                        Do you offer financing options?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, we offer flexible financing solutions to make premium cycling equipment more accessible. For purchases above ₱5,000, you can choose from:</p>
+                            <ul>
+                                <li>0% interest installment plans (3, 6, or 12 months) with selected credit cards</li>
+                                <li>Home Credit financing with competitive rates</li>
+                                <li>WELS Cycling Layaway Program (20% down payment, up to 3 months to complete payment)</li>
+                            </ul>
+                            <p>Financing options are available at checkout. Documentation requirements vary by financing method.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="payments">
+                    <div class="faq-question">
+                        Are prices inclusive of taxes?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, all prices displayed on our website include VAT and applicable taxes for purchases within the Philippines. For international orders, displayed prices do not include any potential import duties, taxes, or customs fees that may be charged by your country's authorities upon delivery.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Returns & Warranty Section -->
+            <div class="faq-section" id="returns">
+                <h2>Returns & Warranty</h2>
+                
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        What is your return policy?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>We offer a 14-day return policy for unused products in original packaging. Bikes must be unridden with all original tags and protective materials intact. Custom or sale items are generally not eligible for return unless defective.</p>
+                            <p>To initiate a return, please visit our Returns page or contact customer service. Return shipping costs are the customer's responsibility unless the item is defective or was shipped incorrectly.</p>
+                            <p>For detailed information, please see our <a href="shipping-returns.html">Shipping & Returns</a> page.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        How does your warranty work?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>All bikes come with the manufacturer's warranty, typically covering:</p>
+                            <ul>
+                                <li>Frame: Limited lifetime warranty against manufacturing defects</li>
+                                <li>Components: 1-2 years, depending on the manufacturer</li>
+                                <li>Carbon components: 2-3 years against manufacturing defects</li>
+                            </ul>
+                            <p>Warranty coverage excludes normal wear and tear, improper assembly, accidents, or misuse. For warranty claims, please contact our service department with your order number and detailed description of the issue.</p>
+                            <p>For complete warranty information, please visit our <a href="#">Warranty</a> page.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-category="returns">
+                    <div class="faq-question">
+                        Do you offer a satisfaction guarantee?
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Yes, we offer a 30-day ride satisfaction guarantee on all bikes. If you're not completely satisfied with your bike within 30 days of receiving it, you can return it for store credit or exchange it for a different model.</p>
+                            <p>The bike must be in good condition with only normal test-riding wear. Any significant damage will affect the refund amount. A 10% restocking fee applies to all bike returns under the satisfaction guarantee.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="contact-cta">
+                <h3>Still Have Questions?</h3>
+                <p>Our customer service team is ready to help with any questions not covered in our FAQ. Contact us via email, phone, or visit our store.</p>
+                <a href="contact-us.html" class="btn">Contact Us</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>About WELS</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                    <li><a href="#">Warranty</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="product.html">Bikes</a></li>
+                    <li><a href="product.html">Accessories</a></li>
+                    <li><a href="product.html">Apparel</a></li>
+                    <li><a href="product.html">Components</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 WELS Cycling. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navbar.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Change hamburger icon to X when menu is open
+            if (navbar.classList.contains('active')) {
+                hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburger.children[1].style.opacity = '0';
+                hamburger.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'none';
+            }
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (navbar.classList.contains('active') && 
+                !event.target.closest('#navbar') && 
+                !event.target.closest('.hamburger')) {
+                navbar.classList.remove('active');
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'none';
+            }
+        });
+
+        // Header shrink on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.height = '60px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.height = '70px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // FAQ accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    // Toggle active class on the question
+                    this.classList.toggle('active');
+                    
+                    // Toggle the answer visibility
+                    const answer = this.nextElementSibling;
+                    answer.classList.toggle('active');
+                });
+            });
+            
+            // Category filtering
+            const categoryButtons = document.querySelectorAll('.category-button');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Get selected category
+                    const category = this.getAttribute('data-category');
+                    
+                    // Filter FAQ items
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Highlight active nav item
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll('#navbar li a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

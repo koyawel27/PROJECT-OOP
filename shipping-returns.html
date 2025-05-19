@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>Shipping & Returns - WELS Cycling</title>
+    <script src="shared-cart.js"></script>
+    <script src="floating-cart-modal.js"></script>
+
+    <style>
+        .page-title {
+            text-align: center;
+            padding: 40px 0;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+        }
+
+        .page-title h1 {
+            font-size: 2.5rem;
+            color: darkslategray;
+            margin-top: 40px;
+        }
+
+        .content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .policy-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .policy-section h2 {
+            color: #d13d38;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f1f1f1;
+        }
+
+        .policy-section h3 {
+            color: #555;
+            margin: 20px 0 10px;
+        }
+
+        .policy-section p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #666;
+        }
+
+        .policy-section ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .policy-section li {
+            margin-bottom: 8px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .shipping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .shipping-table th,
+        .shipping-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .shipping-table th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .shipping-table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .note-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #d13d38;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .note-box p {
+            margin: 0;
+            color: #555;
+        }
+
+        .process-steps {
+            counter-reset: step-counter;
+            margin: 20px 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .process-steps li {
+            position: relative;
+            margin-bottom: 20px;
+            padding-left: 50px;
+            counter-increment: step-counter;
+        }
+
+        .process-steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background-color: #d13d38;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo" onclick="window.location.href='homepage.html'"></a>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search bikes, gear & more">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="cart.html">
+                      <i class="fa-solid fa-cart-shopping"></i>
+                      <span class="cart-count" id="cart-count" style="display:none;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="page-title">
+        <h1>Shipping & Returns Policy</h1>
+    </div>
+
+    <main class="content-container">
+        <div class="policy-section">
+            <h2>Shipping Information</h2>
+            <p>At WELS Cycling, we strive to provide fast, reliable shipping options to all our customers across the Philippines. Below are the details of our shipping services:</p>
+            
+            <h3>Shipping Timeframes</h3>
+            <table class="shipping-table">
+                <tr>
+                    <th>Location</th>
+                    <th>Standard Shipping</th>
+                    <th>Express Shipping</th>
+                </tr>
+                <tr>
+                    <td>Metro Manila</td>
+                    <td>2-3 business days</td>
+                    <td>Next business day</td>
+                </tr>
+                <tr>
+                    <td>Luzon (outside Metro Manila)</td>
+                    <td>3-5 business days</td>
+                    <td>2 business days</td>
+                </tr>
+                <tr>
+                    <td>Visayas</td>
+                    <td>5-7 business days</td>
+                    <td>3 business days</td>
+                </tr>
+                <tr>
+                    <td>Mindanao</td>
+                    <td>7-10 business days</td>
+                    <td>3-5 business days</td>
+                </tr>
+            </table>
+            
+            <h3>Shipping Costs</h3>
+            <p>Shipping costs are calculated based on the size and weight of the items in your order and your delivery location:</p>
+            <ul>
+                <li>Accessories and apparel: ₱150 - ₱500 depending on weight and location</li>
+                <li>Bikes: ₱1,000 - ₱2,500 depending on model and location</li>
+                <li>FREE shipping on orders over ₱5,000 (Standard shipping only)</li>
+            </ul>
+            
+            <div class="note-box">
+                <p><strong>Note:</strong> Shipping times may be affected by weather conditions, holidays, or other unforeseen circumstances. We'll keep you updated on any delays.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2>Returns & Exchanges</h2>
+            <p>We want you to be completely satisfied with your purchase. If you're not, we offer a simple returns and exchanges process.</p>
+            
+            <h3>Return Policy</h3>
+            <ul>
+                <li>Returns are accepted within 30 days of purchase for unused items in original packaging with tags attached.</li>
+                <li>Bikes can be returned within 14 days if unridden and in pristine condition.</li>
+                <li>Sale items are eligible for returns within 14 days.</li>
+                <li>Customized items cannot be returned unless they are defective.</li>
+            </ul>
+            
+            <h3>How to Return an Item</h3>
+            <ol class="process-steps">
+                <li>Contact our customer service team via email at returns@welscycling.com or call +63 (2) 8123 4567.</li>
+                <li>Fill out the return form that came with your order, or download it from our website.</li>
+                <li>Package the item(s) securely in the original packaging if possible.</li>
+                <li>Ship the item(s) to our returns center using a trackable shipping method.</li>
+                <li>Once received and inspected, we'll process your refund or exchange.</li>
+            </ol>
+            
+            <h3>Refund Process</h3>
+            <p>Refunds will be issued back to the original payment method within 7-10 business days after we receive the returned item(s). Shipping costs are non-refundable unless the return is due to our error.</p>
+            
+            <h3>Exchanges</h3>
+            <p>To exchange an item, follow the same process as returns but specify the replacement item you want. If there's a price difference, we'll either charge or refund the difference.</p>
+            
+            <div class="note-box">
+                <p><strong>Note:</strong> Items must be returned in their original condition. Items showing signs of use, damage, or wear may not be eligible for a full refund.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>About WELS</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="about.html">Careers</a></li>
+                    
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+                    <li><a href="warranty.html">Warranty</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="product.html">Bikes</a></li>
+                    <li><a href="product.html">Accessories</a></li>
+                    <li><a href="product.html">Apparel</a></li>
+                    <li><a href="product.html">Components</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 WELS Cycling. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            const hamburger = document.querySelector('.hamburger');
+            
+            navbar.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            
+            // Change hamburger icon to X when menu is open
+            if (navbar.classList.contains('active')) {
+                hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                hamburger.children[1].style.opacity = '0';
+                hamburger.children[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+            } else {
+                hamburger.children[0].style.transform = 'none';
+                hamburger.children[1].style.opacity = '1';
+                hamburger.children[2].style.transform = 'none';
+            }
+        }
+
+        // Mark current page as active in the navbar
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#navbar li a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+
+        // Header shrink on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.height = '60px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.height = '70px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+
+</html>

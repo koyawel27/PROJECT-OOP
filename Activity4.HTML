@@ -1,0 +1,175 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Cart</title>
+        <style>
+            
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 30px;
+    }
+
+    h1, h2, h3 {
+        color: #333;
+    }
+
+    .container {
+        max-width: 400px;
+        background: white;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0 3.5px 8px rgba(0,0,0,0.3);
+    }
+
+    select {
+        width: 100%;
+        padding: 8px 12px;
+        margin: 10px 0 20px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    button {
+        background-color: lightpink;
+        color: black;
+        padding: 10px 20px;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: rgb(211, 38, 38);
+        color: white;
+    }
+
+    #cartItems {
+        margin-top: 20px;
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+    }
+
+    .product {
+        padding: 10px;
+        border-bottom: 1px solid #eee;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .product:last-child {
+        border-bottom: none;
+    }
+
+    button {
+  width: 100%;
+  padding: 0.7rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: #1e1e1e;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      color: #FFF5E1;
+      transition: background-color 0.3s ease;
+      max-width: 100px;
+    }
+
+    .back-button:hover {
+      background-color: #333;
+    }
+    </style>
+
+    </head>
+    <body>
+        <button class="back-button" onclick="window.location.href = 'activities.html';">Back</button>
+        <h2>
+            Name: Nepthalie Jezer B. Macaslang
+            <br>
+            Course and Section: BSIS - 2C
+        </h2>
+
+        <h1>Activity 4 Adding Product</h1>
+        <div class="container">
+            <h2>Select a Product</h2>
+
+            <select id="productSelect">
+                <option value="TShirt">T-Shirt</option>
+                <option value="Short">Shorts</option>
+                <option value="Pants">Pants</option>
+            </select>
+
+            <button onclick="addProduct()">Add to Cart</button>
+            <div id="cart"></div>
+            <h3>Cart</h3>
+            <div id="cartItems"></div>
+        </div>
+
+        <script>
+            const cart = [];
+        
+            function addProduct() {
+                const productType = document.getElementById("productSelect").value;
+                let product;
+        
+                switch (productType) {
+                    case "TShirt":
+                        product = { name: "T-Shirt", price: 1500 };
+                        break;
+                    case "Short":
+                        product = { name: "Shorts", price: 800 };
+                        break;
+                    case "Pants":
+                        product = { name: "Pants", price: 600 };
+                        break;
+                    default:
+                        alert("Invalid product type selected.");
+                        return;
+                }
+        
+                cart.push(product);
+                renderCart();
+            }
+        
+            function renderCart(){
+                const cartItems = document.getElementById('cartItems');
+                cartItems.innerHTML = ''; // burahin ibang items
+                cart.forEach((item, index) => {
+                    cartItems.innerHTML += `
+                        <div class="product">
+                            ${index + 1}. ${item.name} - $${item.price}
+                        </div>
+                    `;
+                });
+            }
+        </script>
+        
+    </body>
+    </html>

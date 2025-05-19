@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f7f7;
+            padding: 30px;
+            margin: 0;
+        }
+
+        h3 {
+            background-color: #ffe4e1;
+            padding: 15px;
+            border-left: 5px solid lightcoral;
+            color: #333;
+        }
+
+        .main {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        #column1, .column2 {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            flex: 1 1 300px;
+        }
+
+        h1, h2 {
+            color: #444;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: lightcoral;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            background-color: crimson;
+        }
+
+        button:active {
+            background-color: darkred;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+        }
+
+        #total {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #222;
+            font-size: 16px;
+        }
+
+        .back-button {
+      position: absolute;
+      top: 5px;
+      left: 20px;
+      background-color: #1e1e1e;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      color: #FFF5E1;
+      transition: background-color 0.3s ease;
+      max-width: 100px;
+    }
+
+    .back-button:hover {
+      background-color: #333;
+    }
+    </style>
+
+</head>
+<body>
+    <button class="back-button" onclick="window.location.href = 'activities.html';">Back</button>
+    <h3>ACTIVITY 5 - PRODUCT TOTAL <br>
+    Name: Nepthalie Jezer B. Macaslang <br>
+    Course and Section: BSIS - 2C
+    </h3>
+
+    <div class="main">
+        <div id="column1">
+            <h1>Product Total</h1>
+            <p>T-Shirt - 1500</p>
+            <button onclick="addToCart('T-Shirt', 1500)">Add to Cart</button>
+
+            <p>Shorts - 800</p>
+            <button onclick="addToCart('Shorts', 800)">Add to Cart</button>
+
+            <p>Pants - 600</p>
+            <button onclick="addToCart('Pants', 600)">Add to Cart</button>
+        </div>
+        <div class="column2">
+            <h2>Your Cart</h2>
+            <ul id="cart"></ul>
+            <p id="total"></p>
+        </div>
+    </div>
+
+    <script>
+        const cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            showCart();
+        }
+
+        function showCart() {
+            const cartList = document.getElementById("cart");
+            const totalElement = document.getElementById("total");
+            cartList.innerHTML = ""; // Clear previous items
+
+            let total = 0;
+            cart.forEach((item) => {
+                const li = document.createElement("li");
+                li.textContent = `${item.name} - $${item.price}`;
+                cartList.appendChild(li);
+                total += item.price;
+            });
+
+            totalElement.textContent = `Total: $${total}`;
+        }
+    </script>
+</body>
+</html>

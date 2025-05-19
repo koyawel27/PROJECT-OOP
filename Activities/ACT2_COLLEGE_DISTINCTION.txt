@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>COLLEGE GRADE</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+
+    .box {
+      flex: 1;
+      min-width: 350px;
+      padding: 20px;
+      background-color: #fdfdfd;
+      border: 2px solid #ccc;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .box-header {
+      background-color: #4a90e2;
+      color: white;
+      padding: 10px 15px;
+      font-weight: bold;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      margin: -20px -20px 20px -20px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .box.blue .box-header {
+      background-color: #4a90e2;
+    }
+
+    .box.green .box-header {
+      background-color: #4CAF50;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #aaa;
+    }
+
+    button {
+      margin-top: 10px;
+      margin-right: 10px;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:active {
+      background-color: #3d8c3d;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+
+      <!-- Box 1 -->
+      <div class="box blue">
+        <div class="box-header">Enter Student Data</div>
+        <div class="column1">
+          <label>Student Number:</label>
+          <input type="text" id="sno">
+
+          <label>Last Name:</label>
+          <input type="text" id="lname">
+
+          <label>First Name:</label>
+          <input type="text" id="fname">
+
+          <label>Course & Section:</label>
+          <input type="text" id="crs">
+
+          <label for="score">Average (1-5)</label>
+          <input type="number" id="score" min="1" max="5" step="0.01">
+
+          <button id="btn1" onclick="insertGrade()">Submit</button>
+          <button id="btn2" onclick="clrftm()">Clear</button>
+        </div>
+      </div>
+
+      <!-- Box 2 -->
+      <div class="box green">
+        <div class="box-header">Student Information</div>
+        <div class="column2">
+          <table id="gradeTable">
+            <thead>
+              <tr>
+                <th>Student Number</th>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Course & Section</th>
+                <th>Average</th>
+                <th>Distinction</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function insertGrade() {
+      if (confirm('Are you sure you want to add all data in the table?')) {
+        const sno = document.getElementById('sno').value.trim();
+        const lname = document.getElementById('lname').value.trim();
+        const fname = document.getElementById('fname').value.trim();
+        const crs = document.getElementById('crs').value.trim();
+        const scoreVal = document.getElementById('score').value;
+        const score = parseFloat(scoreVal);
+
+        if (!sno || !lname || !fname || !crs || isNaN(score) || score < 1 || score > 5) {
+          alert('Please fill in all fields with valid data');
+          return;
+        }
+
+        let distinction = '';
+        if (score >= 1 && score <= 1.2) {
+          distinction = 'SUMMA CUM LAUDE';
+        } else if (score > 1.2 && score <= 1.5) {
+          distinction = 'MAGNA CUM LAUDE';
+        } else if (score > 1.5 && score <= 2) {
+          distinction = 'CUM LAUDE';
+        } else if (score > 2 && score <= 3.99) {
+          distinction = 'PASSED';
+        } else {
+          distinction = 'FAILED';
+        }
+
+        const table = document.getElementById('gradeTable').getElementsByTagName('tbody')[0];
+        const newRow = table.insertRow();
+        newRow.insertCell(0).innerText = sno;
+        newRow.insertCell(1).innerText = lname;
+        newRow.insertCell(2).innerText = fname;
+        newRow.insertCell(3).innerText = crs;
+        newRow.insertCell(4).innerText = score.toFixed(2);
+        newRow.insertCell(5).innerText = distinction;
+      }
+    }
+
+    function clrftm() {
+      document.getElementById('sno').value = '';
+      document.getElementById('lname').value = '';
+      document.getElementById('fname').value = '';
+      document.getElementById('crs').value = '';
+      document.getElementById('score').value = '';
+    }
+  </script>
+</body>
+</html>

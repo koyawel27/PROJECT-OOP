@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>Register</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo"></a>
+            
+            <div class="search-container">
+                <input type="text" placeholder="Search bikes, gear & more">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html" class="active">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="reg-background-image"></div>
+
+    <div class="register-container">
+        <div class="form-container">
+            <h1>Create an Account</h1>
+            
+            <!-- Profile Image Upload Section -->
+            <div class="image-preview-container">
+                <img id="imagePreview" class="image-preview" src="images/default-profile.jpg" alt="Profile Image">
+                <button type="button" class="image-upload-btn" onclick="document.getElementById('profileImage').click()">
+                    <i class="fa-solid fa-camera"></i>
+                </button>
+                <input type="file" id="profileImage" class="file-input" accept="image/*">
+            </div>
+            
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                    <div id="usernameError" class="error-message">Username already exists</div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <div id="passwordError" class="error-message">Passwords don't match</div>
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="section">Section</label>
+                    <input type="text" id="section" name="section" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact Number</label>
+                    <input type="tel" id="contact" name="contact" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="button">Register</button>
+                </div>
+                <p class="text-center">Already have an account? <a href="landing-page.html">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Load the user activities script -->
+    <script src="userActivities.js"></script>
+
+    <script>
+        // Mark current page as active in navbar
+        const currentPage = window.location.pathname.split("/").pop();
+        const navLinks = document.querySelectorAll('#navbar li a');
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPage) {
+                link.classList.add('active');
+            }
+        });
+
+        // Image preview functionality
+        const profileImageInput = document.getElementById('profileImage');
+        const imagePreview = document.getElementById('imagePreview');
+        let imageBase64 = ''; // To store the base64 encoded image
+
+        // Handle image selection
+        profileImageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                // Check file size (max 2MB)
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('File size exceeds 2MB. Please choose a smaller image.');
+                    profileImageInput.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                    imageBase64 = event.target.result; // Store the base64 string
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Get form element
+        const registerForm = document.getElementById('registerForm');
+        
+        // Add submit event listener
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const section = document.getElementById('section').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const contact = document.getElementById('contact').value.trim();
+            
+            // Validate passwords match
+            if (password !== confirmPassword) {
+                document.getElementById('passwordError').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+            
+            // Get existing users from localStorage or initialize empty array
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            
+            // Check if username already exists
+            if (users.some(user => user.username === username)) {
+                document.getElementById('usernameError').style.display = 'block';
+                return;
+            } else {
+                document.getElementById('usernameError').style.display = 'none';
+            }
+            
+            // Create new user object
+            const newUser = {
+                username: username,
+                password: password,
+                name: fullName,
+                email: email,
+                section: section,
+                address: address,
+                contact: contact,
+                profileImage: imageBase64 || '' // Store the image as base64 string
+            };
+            
+            // Add user to array
+            users.push(newUser);
+            
+            // Save updated users array to localStorage
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Create empty activities structure for the new user
+            const userActivities = JSON.parse(localStorage.getItem('userActivities')) || {};
+            userActivities[username] = {
+                midterm: [],
+                finals: []
+            };
+            localStorage.setItem('userActivities', JSON.stringify(userActivities));
+            
+            // Auto login the user
+            localStorage.setItem('loggedInUser', JSON.stringify(newUser));
+            
+            // Redirect to homepage
+            alert('Registration successful! You are now logged in.');
+            window.location.href = 'homepage.html';
+        });
+    </script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.height = '60px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.height = '70px';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+            }
+        });
+    </script>
+</body>
+</html>

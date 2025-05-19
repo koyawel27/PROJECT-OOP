@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="https://kit.fontawesome.com/6852c756e2.js" crossorigin="anonymous"></script>
+    <title>Home</title>
+    <style>
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #E4443F;
+            --secondary-color: darkslategray;
+            --accent-color: #FFF5E1;
+            --background-dark: linear-gradient(to bottom, darkslategray 0%, black 100%);
+            --text-color: #333;
+            --light-text: #fff;
+            --border-radius: 8px;
+            --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            --header-bg: rgba(247, 231, 206, 0.9);
+            --transition: all 0.3s ease;
+        }
+
+        /* Homepage */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: var(--transition);
+        }
+
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            position: relative;
+            background-color: #fff;
+            min-height: 100vh;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation - Cleaner like Specialized */
+        header {
+            background-color: rgba(247, 231, 206, 0.95);
+            backdrop-filter: saturate(180%) blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 70px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            height: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        header .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        header input[type="text"] {
+            padding: 8px 15px;
+            padding-right: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid #ddd;
+            width: 220px;
+            height: 36px;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        header input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(228, 68, 63, 0.3);
+            width: 250px;
+            background-color: white;
+        }
+
+        header .search-icon {
+            position: absolute;
+            right: 12px;
+            font-size: 16px;
+            color: #777;
+            pointer-events: none;
+        }
+
+        #navbar {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        #navbar li a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 16px;
+            position: relative;
+            padding-bottom: 5px;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #navbar li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-color);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        #navbar li a:hover::after,
+        #navbar li a.active::after {
+            width: 50%;
+        }
+
+        #navbar li a:hover,
+        #navbar li a.active {
+            color: var(--primary-color);
+        }
+
+        .cart-icon {
+            position: relative;
+        }
+
+        .cart-icon i {
+            font-size: 20px;
+            color: var(--secondary-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 70px 0 0;
+        }
+
+        /* Hero Section - Full width like Specialized */
+        #hero {
+            background-image: url(images/aditya-wardhana-LFv9vVBLmwM-unsplash.jpg);
+            background-size: cover;
+            background-position: center;
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0 80px;
+            color: var(--light-text);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        #hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        #hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        #hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        #hero .cta-button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(228, 68, 63, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        #hero .cta-button:hover {
+            background-color: #cc3a36;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(228, 68, 63, 0.4);
+        }
+
+        /* Category Tiles - Like Specialized */
+        .categories-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .category-tile {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 300px;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+        }
+
+        .category-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-tile:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 20px;
+            color: white;
+        }
+
+        .category-overlay h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .category-overlay p {
+            font-size: 14px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .shop-link {
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .shop-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .shop-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Featured Products - Larger images like Specialized */
+        .products-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card .img-container {
+            height: 250px;
+            overflow: hidden;
+            background-color: #f5f5f5;
+            position: relative;
+        }
+
+        .product-card .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .img-container img {
+            transform: scale(1.1);
+        }
+
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 4px;
+            z-index: 1;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info .brand {
+            color: var(--secondary-color);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info .model {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--text-color);
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .product-info .desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .product-info .pricing {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .product-info .old-price {
+            text-decoration: line-through;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .product-info .price {
+            color: var(--primary-color);
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* Deals Section */
+        .deals-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger menu for mobile */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            header {
+                padding: 0 30px;
+            }
+            
+            #hero {
+                padding: 0 40px;
+            }
+            
+            #hero h1 {
+                font-size: 50px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header {
+                padding: 0 20px;
+            }
+            
+            #hero {
+                padding: 0 30px;
+                height: 80vh;
+            }
+            
+            #hero h1 {
+                font-size: 40px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .category-tile {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-container {
+                gap: 15px;
+            }
+            
+            #navbar {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background-color: var(--header-bg);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 80px;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 100;
+            }
+            
+            #navbar.active {
+                right: 0;
+            }
+            
+            #navbar li {
+                margin: 20px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            header .search-container {
+                display: none;
+            }
+            
+            #hero {
+                padding: 0 20px;
+                height: 70vh;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+            
+            #hero h1 {
+                font-size: 32px;
+            }
+            
+            #hero p {
+                font-size: 16px;
+            }
+            
+            .categories-grid,
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                height: 60px;
+            }
+            
+            .logo {
+                height: 35px;
+            }
+            
+            #hero {
+                height: 60vh;
+            }
+            
+            #hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .category-tile {
+                height: 200px;
+            }
+            
+            .category-overlay h3 {
+                font-size: 20px;
+            }
+            
+            .product-info .model {
+                font-size: 16px;
+            }
+        }
+    </style>
+    
+</head>
+
+<body>
+    <header>
+        <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="Logo" class="logo"></a>
+        
+        <div class="nav-container">
+            <div class="search-container">
+                <input type="text" placeholder="Search">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html" class="active">Home</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+            
+            <a href="cart.html" class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cart-count">2</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section - Full width like Specialized -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1>RIDE BEYOND</h1>
+                <p>Discover the perfect bike for your journey</p>
+                <a href="product.html" class="cta-button">Shop Now</a>
+            </div>
+        </section>
+
+        <!-- Categories Section - Like Specialized -->
+        <section class="categories-section">
+            <div class="container">
+                <h2 class="section-title">Browse Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-tile">
+                        <img src="images/bike.png" alt="Road Bikes">
+                        <div class="category-overlay">
+                            <h3>Road Bikes</h3>
+                            <p>Performance machines designed for speed and endurance</p>
+                            <a href="product.html" class="shop-link">Shop Road Bikes</a>
+                        </div>
+                    </div>
+                    <div class="category-tile">
+                        <img src="images/bike2.png" alt="Mountain Bikes">
+                        <div class="category-overlay">
+                            <h3>Mountain Bikes</h3>
+                            <p>Tackle any terrain with confidence</p>
+                            <a href="product.html" class="shop-link">Shop Mountain Bikes</a>
+                        </div>
+                    </div>
+                    <div class="category-tile">
+                        <img src="images/Sleeve.png" alt="Apparel">
+                        <div class="category-overlay">
+                            <h3>Apparel</h3>
+                            <p>Premium cycling gear for comfort and performance</p>
+                            <a href="product.html" class="shop-link">Shop Apparel</a>
+                        </div>
+                    </div>
+                    <div class="category-tile">
+                        <img src="images/GPS.png" alt="Accessories">
+                        <div class="category-overlay">
+                            <h3>Accessories</h3>
+                            <p>Essential gear for every ride</p>
+                            <a href="product.html" class="shop-link">Shop Accessories</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products - Larger images like Specialized -->
+        <section class="products-section">
+            <div class="container">
+                <h2 class="section-title">Featured Products</h2>
+                <div class="products-grid">
+                    <div class="product-card" onclick="location.href='product.html'">
+                        <div class="img-container">
+                            <span class="product-tag">New</span>
+                            <img src="images/bike.png" alt="Roubaix">
+                        </div>
+                        <div class="product-info">
+                            <p class="brand">SPECIALIZED</p>
+                            <p class="model">Roubaix Comp - SRAM Rival eTap AXS</p>
+                            <p class="desc">Endurance Road Bike</p>
+                            <div class="pricing">
+                                <p class="old-price">₱1,799,000</p>
+                                <p class="price">₱1,699,990</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="product-card" onclick="location.href='product.html'">
+                        <div class="img-container">
+                            <span class="product-tag">Sale</span>
+                            <img src="images/bike2.png" alt="Lapierre">
+                        </div>
+                        <div class="product-info">
+                            <p class="brand">LAPIERRE</p>
+                            <p class="model">XELIUS DRS 8.0 C2 - Carbon Road Bike</p>
+                            <p class="desc">2025 - black</p>
+                            <div class="pricing">
+                                <p class="old-price">₱189,000</p>
+                                <p class="price">₱176,595</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="product-card" onclick="location.href='product.html'">
+                        <div class="img-container">
+                            <img src="images/bike3.png" alt="Giant">
+                        </div>
+                        <div class="product-info">
+                            <p class="brand">GIANT</p>
+                            <p class="model">Defy Advanced 1 - Carbon Road Bike</p>
+                            <p class="desc">2024 - charcoal/milky way</p>
+                            <div class="pricing">
+                                <p class="old-price">₱1,888,451</p>
+                                <p class="price">₱1,778,451</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deals Section -->
+        <section class="deals-section">
+            <div class="container">
+                <h2 class="section-title">Hot Deals</h2>
+                <div class="products-grid">
+                    <div class="product-card" onclick="location.href='product.html'">
+                        <div class="img-container">
+                            <span class="product-tag">Sale</span>
+                            <img src="images/GPS.png" alt="Wahoo GPS">
+                        </div>
+                        <div class="product-info">
+                            <p class="brand">WAHOO</p>
+                            <p class="model">ELEMNT BOLT 2.0 GPS Bike Computer</p>
+                            <p class="desc">Computer</p>
+                            <div class="pricing">
+                                <p class="old-price">₱18,074</p>
+                                <p class="price">₱15,074</p>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="product-card" onclick="location.href='product.html'">
+                        <div class="img-container">
+                            <span class="product-tag">30% Off</span>
+                            <img src="images/shoes.png" alt="Shimano Shoes">
+                        </div>
+                        <div class="product-info">
+                            <p class="brand">SHIMANO</p>
+                            <p class="model">SH-EX700 Bike Shoes Men</p>
+                            <p class="desc">Pro Cycling Shoes - black</p>
+                            <div class="pricing">
+                                <p class="old-price">₱10,899</p>
+                                <p class="price">₱7,899</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card" onclick="location.href='product.html'">
+                        <div class="img-container">
+                            <span class="product-tag">Limited</span>
+                            <img src="images/Sleeve.png" alt="Café du Cycliste Jersey">
+                        </div>
+                        <div class="product-info">
+                            <p class="brand">Café du Cycliste</p>
+                            <p class="model">Olympe Short Sleeve Jersey Men</p>
+                            <p class="desc">Cinder red</p>
+                            <div class="pricing">
+                                <p class="old-price">₱14,899</p>
+                                <p class="price">₱11,871</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Road Bikes</a></li>
+                        <li><a href="#">Mountain Bikes</a></li>
+                        <li><a href="#">Apparel</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Sale Items</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Stay Connected</h4>
+                    <p>Subscribe to our newsletter for updates and promotions</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 WELS Cycling. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Completing the script section -->
+<script>
+    // Mobile menu toggle function
+    function toggleMenu() {
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.querySelector('.hamburger');
+        navbar.classList.toggle('active');
+        hamburger.classList.toggle('active');
+        
+        // Toggle hamburger icon to X
+        const spans = hamburger.querySelectorAll('span');
+        if (navbar.classList.contains('active')) {
+            spans[0].style.transform = 'translateY(9px) rotate(45deg)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'translateY(-9px) rotate(-45deg)';
+        } else {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+        }
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+        const navbar = document.getElementById('navbar');
+        const hamburger = document.querySelector('.hamburger');
+        
+        if (navbar.classList.contains('active') && 
+            !navbar.contains(event.target) && 
+            !hamburger.contains(event.target)) {
+            toggleMenu();
+        }
+    });
+
+    // Product image hover effect
+    const productCards = document.querySelectorAll('.product-card');
+    productCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const img = card.querySelector('.img-container img');
+            img.style.transform = 'scale(1.1)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const img = card.querySelector('.img-container img');
+            img.style.transform = 'scale(1)';
+        });
+    });
+
+    // Sticky header on scroll
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.backgroundColor = 'rgba(247, 231, 206, 0.98)';
+            header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.backgroundColor = 'rgba(247, 231, 206, 0.95)';
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+        }
+    });
+
+    // Initialize carousel for products (if needed)
+    // Note: This is a placeholder. You might want to add a carousel library like Swiper.js for better functionality
+    function initProductCarousel() {
+        // Carousel implementation can be added here
+    }
+
+    // Document ready function
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize functions when the DOM is fully loaded
+        initProductCarousel();
+    });
+</script>
+</body>
+</html>

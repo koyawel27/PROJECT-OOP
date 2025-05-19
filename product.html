@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script crossorigin="anonymous" src="https://kit.fontawesome.com/6852c756e2.js"></script>
+    <link href="styles.css" rel="stylesheet" />
+    <title>Product Page</title>
+    <script src="shared-cart.js"></script>
+    <script src="floating-cart-modal.js"></script>
+    <script src="auth-protection.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+            <a href="#"><img src="images/wels-high-resolution-logo-transparent.png" alt="WELS Cycling" class="logo"></a>
+
+            <div class="search-container">
+                <input type="text" placeholder="Search bikes, gear & more">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            </div>
+
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navbar">
+                <li><a href="homepage.html">Home</a></li>
+
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="activities.html">Activities</a></li>
+                <li><a href="product.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li>
+                    <a href="cart.html">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count" id="cart-count" style="display:none;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="background-image"></div>
+    <h1 class="product-header">Our Products</h1>
+    <!-- Search functionality -->
+    <div class="search-container">
+        <input class="search-input" id="product-search" placeholder="Search products..." type="text" />
+    </div>
+    <div class="filter-container">
+        <button class="filter-button active" data-category="all">All Products</button>
+        <button class="filter-button" data-category="rb">Road Bikes</button>
+        <button class="filter-button" data-category="mtb">Mountain Bikes</button>
+        <button class="filter-button" data-category="e-bike">Electric Bikes</button>
+        <button class="filter-button" data-category="accessories">Accessories</button>
+        <button class="filter-button" data-category="clothing">Clothing</button>
+        <button class="filter-button" data-category="electronics">Electronics</button>
+    </div>
+    <div class="product-container" id="product-container">
+        <!-- Bike Products from Homepage -->
+        <div class="product-card" data-category="rb" data-id="1">
+            <div class="product-image"
+                style="background-image: url('images/bike.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">SPECIALIZED</div>
+                <div class="product-title">Roubaix Comp - SRAM Rival eTap AXS</div>
+                <div class="product-description">Endurance Road Bike</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱1,799,000</span>
+                    <span class="product-price">₱1,699,990</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="rb" data-id="2">
+            <div class="product-image"
+                style="background-image: url('images/bike2.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">LAPIERRE</div>
+                <div class="product-title">XELIUS DRS 8.0 C2 - Carbon Road Bike</div>
+                <div class="product-description">2025 - black</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱189,000</span>
+                    <span class="product-price">₱176,595</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="rb" data-id="3">
+            <div class="product-image"
+                style="background-image: url('images/bike3.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">GIANT</div>
+                <div class="product-title">Defy Advanced 1 - Carbon Road Bike</div>
+                <div class="product-description">2024 - charcoal/milky way</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱1,888,451</span>
+                    <span class="product-price">₱1,778,451</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="rb" data-id="4">
+            <div class="product-image"
+                style="background-image: url('images/bike.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">CANNONDALE</div>
+                <div class="product-title">SuperSix EVO - Ultegra Di2</div>
+                <div class="product-description">Pro Racing Bike</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱2,099,000</span>
+                    <span class="product-price">₱1,899,990</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="rb" data-id="5">
+            <div class="product-image"
+                style="background-image: url('images/Pinarello_Dogma.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">PINARELLO</div>
+                <div class="product-title">Dogma F12 - Dura-Ace Di2</div>
+                <div class="product-description">2025 - Red Carbon</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱389,000</span>
+                    <span class="product-price">₱356,595</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="e-bike" data-id="5">
+            <div class="product-image"
+                style="background-image: url(images/MY25_Vala_CC_X0_AXS_RSV_MidnightGreen_ae3aec58-bc2f-4b60-9518-f3d50b2e3640.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">SANTA CRUZ</div>
+                <div class="product-title">Vala C S-Kit CX 600 E-Bike</div>
+                <div class="product-description">2025 - Midnight Green</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱600,000</span>
+                    <span class="product-price">₱534,468</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="e-bike" data-id="5">
+            <div class="product-image"
+                style="background-image: url(images/95223-50_LEVO-COMP-ALLOY-BLK-DOVGRY-BLK_HERO.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">SPECIALIZED</div>
+                <div class="product-title">Turbo Levo 3 Comp Alloy E-Bike</div>
+                <div class="product-description">2025 - Black</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱600,000</span>
+                    <span class="product-price">₱534,468</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="mtb" data-id="5">
+            <div class="product-image"
+                style="background-image: url(images/93325-00_SJ-15-SW-GUN-CLY-WHTMTN_HERO-PDP.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">SPECIALIZED</div>
+                <div class="product-title">S-Works Stumpjumper 15 Mountain Bike</div>
+                <div class="product-description">2025 - Dove Grey/Gloss Bronze</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱650,000</span>
+                    <span class="product-price">609,762.51</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Accessories Products from Homepage -->
+        <div class="product-card" data-category="electronics" data-id="6">
+            <div class="product-image"
+                style="background-image: url('images/GPS.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">WAHOO</div>
+                <div class="product-title">ELEMNT BOLT 2.0 GPS Bike Computer</div>
+                <div class="product-description">Computer - black</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱18,074</span>
+                    <span class="product-price">₱15,074</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="clothing" data-id="7">
+            <div class="product-image"
+                style="background-image: url('images/shoes.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">SHIMANO</div>
+                <div class="product-title">SH-EX700 Bike Shoes Men</div>
+                <div class="product-description">Pro Cycling Shoes - black</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱10,899</span>
+                    <span class="product-price">₱7,899</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="clothing" data-id="8">
+            <div class="product-image"
+                style="background-image: url('images/Sleeve.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">Café du Cycliste</div>
+                <div class="product-title">Olympe Short Sleeve Jersey Men</div>
+                <div class="product-description">Cinder red</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱14,899</span>
+                    <span class="product-price">₱11,871</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="electronics" data-id="9">
+            <div class="product-image"
+                style="background-image: url('images/cf-xl-2c924b75-b7f7-4788-916e-23a6ee57fcef_92234576-bed6-4ff7-83df-171dcf04590d.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">GARMIN</div>
+                <div class="product-title">Edge 1040 GPS Cycling Computer</div>
+                <div class="product-description">Solar Powered</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱32,500</span>
+                    <span class="product-price">₱29,999</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="clothing" data-id="10">
+            <div class="product-image"
+                style="background-image: url('images/giro-empire-slx-road-shoe-white-right.png'); background-size: contain; background-repeat: no-repeat; background-position: center;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">GIRO</div>
+                <div class="product-title">Empire SLX Carbon Road Shoes</div>
+                <div class="product-description">Ultralight Pro Series</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱17,599</span>
+                    <span class="product-price">₱14,999</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <!-- Additional Products -->
+        <div class="product-card" data-category="accessories" data-id="11">
+            <div class="product-image"
+                style="background-image: url(images/43019-013_CAGE_SW-RIB-CAGE-III-CARBON-CARB-GLOSS-BLK_HERO-SQUARE.png); background-size: cover;">
+            </div>
+            <div class="product-details">
+                <div class="product-brand">SPECIALIZED</div>
+                <div class="product-title">Pro Carbon Bottle Cage</div>
+                <div class="product-description">Ultra lightweight carbon fiber bottle holder</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱2,499</span>
+                    <span class="product-price">₱1,999</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-card" data-category="accessories" data-id="12">
+            <div class="product-image"
+                style="background-image: url(images/mini-20-pro-silver.png); background-size: cover;"></div>
+            <div class="product-details">
+                <div class="product-brand">TOPEAK</div>
+                <div class="product-title">Mini Pro 20 Tool Set</div>
+                <div class="product-description">Compact multi-tool for roadside repairs</div>
+                <div class="product-price-container">
+                    <span class="old-price">₱3,599</span>
+                    <span class="product-price">₱2,999</span>
+                </div>
+                <div class="button-container">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="checkout-now">Checkout Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Toast notification for added products -->
+    <div class="toast-notification" id="toast-notification">
+        <i class="fa-solid fa-check-circle"></i>
+        <span id="toast-message">Item added to cart</span>
+    </div>
+    
+    <script>
+        // Function to handle "Checkout Now" functionality
+        function checkoutNow(id, title, price, description, image) {
+            // First add item to cart
+            const cart = addToCart(id, title, price, description, image);
+
+            // Then redirect to the cart page
+            window.location.href = 'cart.html';
+
+            return cart;
+        }
+
+        // Updated event listeners for product.html
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize cart
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id');
+            const productSlug = urlParams.get('product');
+            const categoryFilter = urlParams.get('category');
+
+            // Filter by category if specified in URL
+            if (categoryFilter) {
+                const categoryButton = document.querySelector(`.filter-button[data-category="${categoryFilter}"]`);
+                if (categoryButton) {
+                    // Trigger click on the appropriate category button
+                    categoryButton.click();
+                }
+            }
+
+            // Header shrink on scroll
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.height = '60px';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.height = '70px';
+                    header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                }
+            });
+
+            // Highlight and scroll to the specific product if ID is provided
+            if (productId) {
+                const targetProduct = document.querySelector(`.product-card[data-id="${productId}"]`);
+
+                if (targetProduct) {
+                    // Add highlight effect
+                    targetProduct.classList.add('highlighted-product');
+
+                    // Scroll to the product with a small delay to allow filtering to complete
+                    setTimeout(() => {
+                        targetProduct.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 300);
+
+                    // Remove highlight after a few seconds
+                    setTimeout(() => {
+                        targetProduct.classList.remove('highlighted-product');
+                    }, 3000);
+                }
+            }
+
+            // Update cart indicator
+            updateCartIndicator();
+
+            // Set active nav item
+            const currentPage = window.location.pathname.split("/").pop();
+            const navLinks = document.querySelectorAll('#navbar li a');
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+;
+            // Product filtering functionality
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const productCards = document.querySelectorAll('.product-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const category = this.getAttribute('data-category');
+
+                    // Show/hide products based on category
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Check if there are visible products
+                    checkForNoResults();
+                });
+            });
+
+            // Search functionality
+            const searchInput = document.getElementById('product-search');
+
+            searchInput.addEventListener('input', function () {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                productCards.forEach(card => {
+                    const brand = card.querySelector('.product-brand').textContent.toLowerCase();
+                    const title = card.querySelector('.product-title').textContent.toLowerCase();
+                    const description = card.querySelector('.product-description').textContent.toLowerCase();
+                    const category = card.getAttribute('data-category').toLowerCase();
+
+                    // Check if active category filter is applied
+                    const activeCategory = document.querySelector('.filter-button.active').getAttribute('data-category');
+
+                    if ((brand.includes(searchTerm) || title.includes(searchTerm) || description.includes(searchTerm) || category.includes(searchTerm)) &&
+                        (activeCategory === 'all' || card.getAttribute('data-category') === activeCategory)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Check if there are visible products
+                checkForNoResults();
+            });
+
+            // Function to check if no results are found
+            function checkForNoResults() {
+                const visibleProducts = document.querySelectorAll('.product-card[style*="display: block"]');
+                const noResultsElement = document.querySelector('.no-results');
+
+                if (visibleProducts.length === 0) {
+                    if (!noResultsElement) {
+                        const noResults = document.createElement('div');
+                        noResults.className = 'no-results';
+                        noResults.textContent = 'No products found';
+                        document.querySelector('.product-container').appendChild(noResults);
+                    }
+                } else if (noResultsElement) {
+                    noResultsElement.remove();
+                }
+            }
+
+            // Add to cart functionality
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            const checkoutNowButtons = document.querySelectorAll('.checkout-now');
+            const toastNotification = document.getElementById('toast-notification');
+            const toastMessage = document.getElementById('toast-message');
+
+            // Function to show toast notification
+            function showToast(message) {
+                toastMessage.textContent = message;
+                toastNotification.classList.add('show');
+
+                // Hide toast after 3 seconds
+                setTimeout(() => {
+                    toastNotification.classList.remove('show');
+                }, 3000);
+            }
+
+            // Helper function to get product data from a card
+            function getProductDataFromCard(productCard) {
+                const productId = parseInt(productCard.getAttribute('data-id'));
+                const productTitle = productCard.querySelector('.product-title').textContent;
+                const productPriceText = productCard.querySelector('.product-price').textContent;
+                const productPrice = parseFloat(productPriceText.replace(/[^0-9.]/g, ''));
+                const productDescription = productCard.querySelector('.product-description').textContent;
+
+                // Get the product image URL - either from the background style or use placeholder
+                let productImage;
+                const imageDiv = productCard.querySelector('.product-image');
+                if (imageDiv) {
+                    const bgStyle = window.getComputedStyle(imageDiv).backgroundImage;
+                    if (bgStyle && bgStyle !== 'none') {
+                        // Extract URL from background-image style
+                        productImage = bgStyle.replace(/^url\(['"](.+)['"]\)$/, '$1');
+                    } else {
+                        productImage = '/api/placeholder/200/150';
+                    }
+                } else {
+                    productImage = '/api/placeholder/200/150';
+                }
+
+                return {
+                    id: productId,
+                    title: productTitle,
+                    price: productPrice,
+                    description: productDescription,
+                    image: productImage
+                };
+            }
+
+            // Add to cart button event listeners
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Prevent event from bubbling to the product card
+                    e.stopPropagation();
+
+                    const productCard = this.closest('.product-card');
+                    const product = getProductDataFromCard(productCard);
+
+                    // Add animation to button
+                    this.classList.add('added-animation');
+                    setTimeout(() => {
+                        this.classList.remove('added-animation');
+                    }, 500);
+
+                    // Add to cart using the shared cart functionality
+                    addToCart(product.id, product.title, product.price, product.description, product.image);
+                    showToast(`${product.title} added to cart`);
+                });
+            });
+
+            // Checkout now button event listeners
+            checkoutNowButtons.forEach(button => {
+                button.addEventListener('click', function (e) {
+                    // Prevent event from bubbling to the product card
+                    e.stopPropagation();
+
+                    const productCard = this.closest('.product-card');
+                    const product = getProductDataFromCard(productCard);
+
+                    // Add animation to button
+                    this.classList.add('added-animation');
+                    setTimeout(() => {
+                        this.classList.remove('added-animation');
+                    }, 500);
+
+                    // Show toast before redirecting
+                    showToast(`${product.title} added to cart - redirecting to checkout...`);
+
+                    // Short delay before redirecting to allow toast to be seen
+                    setTimeout(() => {
+                        checkoutNow(product.id, product.title, product.price, product.description, product.image);
+                    }, 800);
+                });
+            });
+
+            // Make product cards clickable (optional feature)
+            productCards.forEach(card => {
+                card.addEventListener('click', function (e) {
+                    // If the click was on one of the buttons, don't navigate
+                    if (e.target.classList.contains('add-to-cart') ||
+                        e.target.classList.contains('checkout-now') ||
+                        e.target.closest('.add-to-cart') ||
+                        e.target.closest('.checkout-now')) {
+                        return;
+                    }
+
+                    const productId = this.getAttribute('data-id');
+
+                    // You could redirect to a product detail page here
+                    // window.location.href = `product-detail.html?id=${productId}`;
+
+                    // For now, just highlight the product
+                    this.classList.add('highlighted-product');
+                    setTimeout(() => {
+                        this.classList.remove('highlighted-product');
+                    }, 2000);
+                });
+            });
+        });
+
+        function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+  }
+    </script>
+
+</body>
+
+</html>
