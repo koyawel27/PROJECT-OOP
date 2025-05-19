@@ -1,0 +1,15 @@
+# Don't upload your VS Code settings
+.vscode/
+
+# Ignore macOS and Windows junk files
+.DS_Store
+Thumbs.db
+
+# Logs (just in case)
+*.log
+
+# Node.js stuff (ignore if you're not using npm but good to have)
+node_modules/
+
+# Ignore env or secrets if you add them later
+.env
